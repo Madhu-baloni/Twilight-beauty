@@ -1,13 +1,10 @@
-import React, { useContext, useEffect, useState,  } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { createContext } from "react";
 
-
 const MyContext = createContext();
 
-const localStorageCart = JSON.parse(
-  global.localStorage.getItem("cartData") || "[]"
-);
+const localStorageCart = JSON.parse(localStorage.getItem("cartData") || "[]");
 
 export const useMyContext = () => {
   return useContext(MyContext);
@@ -22,11 +19,11 @@ export default function ContextApi({ children }) {
     const isItemInCart = cart?.find((item) => item?.id === data?.id);
 
     isItemInCart
-      ? global.alert("This data is already in cart")
+      ? alert("This data is already in cart")
       : setCart([...cart, { ...data, quantity: 1 }]);
   };
 
-  //to updating cart when new cart added by user 
+  //to updating cart when new cart added by user
   const handleChange = (item, x) => {
     const updatedCart = cart?.map((cartItem) => {
       if (cartItem.id === item.id) {
@@ -44,12 +41,12 @@ export default function ContextApi({ children }) {
 
   const clearCart = () => {
     setCart([]);
-    global.localStorage.setItem("cart", JSON.stringify([]));
+    localStorage.setItem("cart", JSON.stringify([]));
   };
 
   //to store cartdata in localStorage
   useEffect(() => {
-    global.localStorage.setItem("cartData", JSON.stringify(cart));
+    localStorage.setItem("cartData", JSON.stringify(cart));
   }, [cart]);
 
   return (
@@ -69,10 +66,8 @@ export default function ContextApi({ children }) {
     </>
   );
 }
-
+//prop validation
 ContextApi.PropTypes = {
-  children:PropTypes.node.isRequired,
+  children: PropTypes.node.isRequired,
 };
 export { MyContext };
-
-
