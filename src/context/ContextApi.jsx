@@ -70,7 +70,7 @@ export default function ContextApi({ children }) {
   );
 }
 
-ContextApi.propTypes = {
+ContextApi.PropTypes = {
   children:PropTypes.node.isRequired,
 };
 export { MyContext };
