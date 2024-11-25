@@ -13,7 +13,10 @@ export default [
 
    }
   },
-  
+  "globals", {
+    "localStorage": true,
+    
+},
   pluginJs.configs.recommended,
   pluginReact.configs.flat.recommended,
 ];

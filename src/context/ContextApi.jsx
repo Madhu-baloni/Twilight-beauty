@@ -26,7 +26,7 @@ export default function ContextApi({ children }) {
       : setCart([...cart, { ...data, quantity: 1 }]);
   };
 
-  //to updating cart when new cart added by user
+  //to updating cart when new cart added by user 
   const handleChange = (item, x) => {
     const updatedCart = cart?.map((cartItem) => {
       if (cartItem.id === item.id) {
@@ -70,5 +70,9 @@ export default function ContextApi({ children }) {
   );
 }
 
+ContextApi.PropTypes = {
+  children:PropTypes.node.isRequired,
+};
+export { MyContext };
 
 
